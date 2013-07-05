@@ -1,13 +1,8 @@
 package com.topcat.npclib.entity;
 
-import net.minecraft.server.v1_5_R2.EntityPlayer;
-import net.minecraft.server.v1_5_R2.Packet18ArmAnimation;
-import net.minecraft.server.v1_5_R2.WorldServer;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_5_R2.CraftServer;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
@@ -17,6 +12,10 @@ import org.getspout.spout.player.SpoutCraftPlayer;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 import com.topcat.npclib.nms.NPCEntity;
+import net.minecraft.server.v1_6_R1.EntityPlayer;
+import net.minecraft.server.v1_6_R1.Packet18ArmAnimation;
+import net.minecraft.server.v1_6_R1.WorldServer;
+import org.bukkit.craftbukkit.v1_6_R1.CraftServer;
 
 public class HumanNPC extends NPC {
 
@@ -41,11 +40,13 @@ public class HumanNPC extends NPC {
 	}
 
 	public void setName(String name) {
-		((NPCEntity) getEntity()).name = name;
+//		((NPCEntity) getEntity()).name = name;
+		// No longer works wtf
+		// CHANGED 1.6.1
 	}
 
 	public String getName() {
-		return ((NPCEntity) getEntity()).name;
+		return ((NPCEntity) getEntity()).getName(); // CHANGED 1.6.1
 	}
 
 	public PlayerInventory getInventory() {
@@ -97,7 +98,6 @@ public class HumanNPC extends NPC {
 		}
 		getEntity().yaw = (float) (newYaw - 90);
 		getEntity().pitch = (float) newPitch;
-		((EntityPlayer)getEntity()).az = (float)(newYaw - 90);
+		((EntityPlayer) getEntity()).aA = (float) (newYaw - 90); // CHANGED 1.6.1 from aw
 	}
-
 }

@@ -2,13 +2,12 @@ package com.topcat.npclib.nms;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
+import net.minecraft.server.v1_6_R1.Connection;
+import net.minecraft.server.v1_6_R1.NetworkManager;
+import net.minecraft.server.v1_6_R1.Packet;
 
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_5_R2.CraftServer;
-
-import net.minecraft.server.v1_5_R2.Connection;
-import net.minecraft.server.v1_5_R2.NetworkManager;
-import net.minecraft.server.v1_5_R2.Packet;
+import org.bukkit.craftbukkit.v1_6_R1.CraftServer;
 
 /**
  *
@@ -18,6 +17,7 @@ public class NPCNetworkManager extends NetworkManager {
 
 	public NPCNetworkManager() throws IOException {
 		super(((CraftServer) Bukkit.getServer()).getServer().getLogger(), new NullSocket(), "NPC Manager", new Connection() {
+
 			@Override
 			public boolean a() {
 				return true;
@@ -47,5 +47,4 @@ public class NPCNetworkManager extends NetworkManager {
 	@Override
 	public void a() {
 	}
-
 }

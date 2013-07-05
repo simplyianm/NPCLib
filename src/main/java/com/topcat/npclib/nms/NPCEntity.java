@@ -1,17 +1,11 @@
 package com.topcat.npclib.nms;
 
-import net.minecraft.server.v1_5_R2.Entity;
-import net.minecraft.server.v1_5_R2.EntityHuman;
-import net.minecraft.server.v1_5_R2.EntityPlayer;
-import net.minecraft.server.v1_5_R2.EnumGamemode;
-import net.minecraft.server.v1_5_R2.PlayerInteractManager;
-import net.minecraft.server.v1_5_R2.WorldServer;
-
-import org.bukkit.craftbukkit.v1_5_R2.CraftServer;
-import org.bukkit.craftbukkit.v1_5_R2.entity.CraftEntity;
 import org.bukkit.event.entity.EntityTargetEvent;
 
 import com.topcat.npclib.NPCManager;
+import net.minecraft.server.v1_6_R1.*;
+import org.bukkit.craftbukkit.v1_6_R1.CraftServer;
+import org.bukkit.craftbukkit.v1_6_R1.entity.CraftEntity;
 
 /**
  *
@@ -32,8 +26,13 @@ public class NPCEntity extends EntityPlayer {
 		lastTargetId = -1;
 		lastBounceId = -1;
 		lastBounceTick = 0;
-		
+
 		fauxSleeping = true;
+	}
+
+	@Override
+	public String getName() {
+		return name;
 	}
 
 	public void setBukkitEntity(org.bukkit.entity.Entity entity) {
@@ -59,7 +58,7 @@ public class NPCEntity extends EntityPlayer {
 			lastBounceTick = System.currentTimeMillis();
 			lastBounceId = entity.id;
 		}
-		
+
 		if (lastTargetId == -1 || lastTargetId != entity.id) {
 			EntityTargetEvent event = new NpcEntityTargetEvent(getBukkitEntity(), entity.getBukkitEntity(), NpcEntityTargetEvent.NpcTargetReason.CLOSEST_PLAYER);
 			CraftServer server = ((WorldServer) world).getServer();
