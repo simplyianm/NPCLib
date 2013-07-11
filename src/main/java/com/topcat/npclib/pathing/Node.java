@@ -2,12 +2,12 @@ package com.topcat.npclib.pathing;
 
 import java.util.ArrayList;
 import java.util.List;
-import net.minecraft.server.v1_6_R1.AxisAlignedBB;
+import net.minecraft.server.v1_6_R2.AxisAlignedBB;
 
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.craftbukkit.v1_6_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_6_R2.CraftWorld;
 
 public class Node { // Holds data about each block we check
 
@@ -37,7 +37,7 @@ public class Node { // Holds data about each block we check
 	public void update() {
 		notsolid = true;
 		if (b.getType() != Material.AIR) {
-			AxisAlignedBB box = net.minecraft.server.v1_6_R1.Block.byId[b.getTypeId()].b(((CraftWorld) b.getWorld()).getHandle(), b.getX(), b.getY(), b.getZ());
+			AxisAlignedBB box = net.minecraft.server.v1_6_R2.Block.byId[b.getTypeId()].b(((CraftWorld) b.getWorld()).getHandle(), b.getX(), b.getY(), b.getZ());
 			if (box != null) {
 				if (Math.abs(box.e - box.b) > 0.2) {
 					notsolid = false;
