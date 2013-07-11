@@ -12,10 +12,10 @@ import org.getspout.spout.player.SpoutCraftPlayer;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 import com.topcat.npclib.nms.NPCEntity;
-import net.minecraft.server.v1_6_R1.EntityPlayer;
-import net.minecraft.server.v1_6_R1.Packet18ArmAnimation;
-import net.minecraft.server.v1_6_R1.WorldServer;
-import org.bukkit.craftbukkit.v1_6_R1.CraftServer;
+import net.minecraft.server.v1_6_R2.EntityPlayer;
+import net.minecraft.server.v1_6_R2.Packet18ArmAnimation;
+import net.minecraft.server.v1_6_R2.WorldServer;
+import org.bukkit.craftbukkit.v1_6_R2.CraftServer;
 
 public class HumanNPC extends NPC {
 
@@ -70,7 +70,8 @@ public class HumanNPC extends NPC {
 		try {
 			Class.forName("org.getspout.spout.Spout");
 
-			if (!(getEntity().getBukkitEntity() instanceof SpoutCraftPlayer)) {
+			if (!(getEntity().getBukkitEntity() instanceof SpoutCraftPlayer)) 
+			{
 				((NPCEntity) getEntity()).setBukkitEntity(new SpoutCraftPlayer((CraftServer) Bukkit.getServer(), (EntityPlayer) getEntity()));
 			}
 
@@ -98,6 +99,6 @@ public class HumanNPC extends NPC {
 		}
 		getEntity().yaw = (float) (newYaw - 90);
 		getEntity().pitch = (float) newPitch;
-		((EntityPlayer) getEntity()).aA = (float) (newYaw - 90); // CHANGED 1.6.1 from aw
+		((EntityPlayer) getEntity()).aO = (float) (newYaw - 90); // 1.6.2 = aO 1.6.1 = xx? 1.5.2 = az
 	}
 }
