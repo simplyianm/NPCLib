@@ -99,6 +99,6 @@ public class HumanNPC extends NPC {
 		}
 		getEntity().yaw = (float) (newYaw - 90);
 		getEntity().pitch = (float) newPitch;
-		((EntityPlayer) getEntity()).aO = (float) (newYaw - 90); // 1.6.2 = aO 1.6.1 = xx? 1.5.2 = az
+		((EntityPlayer) getEntity()).aP = (float) (newYaw - 90); // 1.6.2 = aO 1.6.1 = xx? 1.5.2 = az
 	}
 }
